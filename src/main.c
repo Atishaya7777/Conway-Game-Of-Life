@@ -1,20 +1,45 @@
 #include "../include/main.h"
 #include <stdio.h>
 
-/**
- * @program Conway's game of life.
- *
- * SETUP:
- * An infinite, two-dimensional orthogonal grid of square cells, each of
- * which is in one of two possible states: LIVE or DEAD.
- *
- * RULES:
- *
- * 1. Any LIVE cell with fewer than two LIVE neighbours dies.
- * 2. Any LIVE cell with two or three lives on to the next generation.
- * 3. Any LIVE cell with more than three neighbours dies.
- * 4. Any DEAD cell with exactly three live neighbours becomes a LIVE cell.
- *
- */
+int is_valid_grid(int (*grid)[40], int dim) {
+  int isValid = 0;
+  int i = 0;
+  int j = 0;
 
-int main() { return 0; }
+  while (i < dim && isValid == 0) {
+    while (j < dim && isValid == 0) {
+      if (grid[i][j] > 0) {
+        isValid = 1;
+      }
+      j++;
+    }
+    i++;
+  }
+
+  return isValid;
+}
+
+void print_grid(int grid[][DIM], int dim) {
+  for (int i = 0; i < dim; i++) {
+    for (int j = 0; j < dim; j++) {
+      printf("%d ", grid[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+int main(void) {
+  int grid[DIM][DIM];
+  int next[DIM][DIM];
+
+  for (int i = 0; i < DIM; i++) {
+    for (int j = 0; j < DIM; j++) {
+      grid[i][j] = 0;
+      next[i][j] = 0;
+    }
+  }
+
+  print_grid(grid, DIM);
+
+  return 0;
+}
