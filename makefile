@@ -14,7 +14,7 @@ DEPS=$(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ=main.o
 OBJ=$(patsubst %,$(ODIR)/%,$(_OBJ))
 
-EXEC=program  
+EXEC=program
 
 $(ODIR):
 	mkdir -p $(ODIR)
